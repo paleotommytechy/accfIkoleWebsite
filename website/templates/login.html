@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Login {% endblock title %}
+
+{% block login-page %}  
+<div class="auth-card" id="login-card">
+<h2>Login</h2>
+{% if messages %}
+    <div class="messages.container">
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="alert alert-danger">
+                <a>{{message}}</a>
+            </div>
+            {% elif message.tags == 'success' %}
+            <div class="alert alert-success">
+                <a>{{message}}</a>
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <a></a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+    <form  method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Remember Me</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+
+        <div class="social-login">
+            <a href="#"><i class="fa-brands fa-goggle"></i></a>
+            <a href="#"><i class="fa-brands fa-apple"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </form>
+    <div class="switch-form">
+        Don't have an account? <a href="{% url 'register' %}" id="show-register-form">Register here</a>
+    </div>
+{% endblock login-page %}  
