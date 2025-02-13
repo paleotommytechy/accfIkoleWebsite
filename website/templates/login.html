@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %} Login {% endblock title %}
 
-{% block login-page %}  
+{% block auth %}  
 <div class="auth-card" id="login-card">
 <h2>Login</h2>
 {% if messages %}
@@ -42,7 +42,7 @@
         <button type="submit" class="btn btn-primary">Login</button>
 
         <div class="social-login">
-            <a href="#"><i class="fa-brands fa-goggle"></i></a>
+            <a href="#"><i class="fa-brands fa-google"></i></a>
             <a href="#"><i class="fa-brands fa-apple"></i></a>
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -51,4 +51,4 @@
     <div class="switch-form">
         Don't have an account? <a href="{% url 'register' %}" id="show-register-form">Register here</a>
     </div>
-{% endblock login-page %}  
+{% endblock auth %}  
