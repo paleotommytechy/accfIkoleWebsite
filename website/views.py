@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import RegisterForm
+from .models import Announcement
 
 
 def register_view(request):
@@ -44,7 +44,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request,'Login Successful!')
-            return redirect('home')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid username or password')
     return render(request, 'login.html')
@@ -53,5 +53,7 @@ def logout_view(request):
     logout(request)
     messages.success(request,'You have been logged out.')
     return redirect('login')
+@login_required(login_url='/login/')
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    announcements = Announcement.objects.order_by('-date_posted')
+    return render(request, 'dashboard.html',{'announcements':announcements})
