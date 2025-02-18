@@ -7,7 +7,7 @@
     <title>ACCF IKOLE CHAPTER || HOMEPAGE</title>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-primary ">
         <div class="container-fluid">
             <a href="#" class="navbar-brand center">WELCOME TO ACCF IKOLE CHAPTER</a>
             <div class="d-flex">
@@ -47,6 +47,9 @@
                                 <h6 class="mb-1 text-primary">{{announcement.title}}</h6>
                                 <small class="text-muted">{{announcement.date_posted|date:"F d, Y"}}</small>
                                 <p class="mb-0">{{announcement.content}}</p>
+                                {% if announcement.image %}
+                                    <img src="{{announcement.image.url}}" alt="{{announcement.title}}">
+                                {% endif %}
                             </li>
                         {% endfor %}
                         </ul>
