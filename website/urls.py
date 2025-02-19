@@ -9,7 +9,7 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('logout/', views.logout_view, name='logout'),
     path('', views.dashboard, name='dashboard'),
-    path('privacy/', privacy_view, name='privacy'),
+    path('privacy/', views.privacy_view, name='privacy'),
 ]
 if not settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
