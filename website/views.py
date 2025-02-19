@@ -57,3 +57,6 @@ def logout_view(request):
 def dashboard(request):
     announcements = Announcement.objects.order_by('-date_posted')
     return render(request, 'dashboard.html',{'announcements':announcements})
+
+def privacy_view(request):
+    return render(request, 'privacy.html')
