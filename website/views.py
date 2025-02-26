@@ -56,17 +56,14 @@ def logout_view(request):
 @login_required(login_url='/login/')
 def dashboard(request):
     announcements = Announcement.objects.order_by('-date_posted')
-<<<<<<< HEAD
     return render(request, 'dashboard.html',{'announcements':announcements})
 
 def privacy_view(request):
     return render(request, 'privacy.html')
-=======
-    display_bible_quotes = DisplayBibleQuotes.get_today_quote()
-    return render(request, 'dashboard.html',{'announcements':announcements,'display_bible_quotes':display_bible_quotes })
+
 
 @login_required(login_url='/login/')
 def bible_quote(request):
     display_bible_quotes = DisplayBibleQuotes.get_today_quote()
     return render(request, 'bible_quotes.html',{'display_bible_quotes': display_bible_quotes })
->>>>>>> 7a75d3e (added bible study unit admin panel)
+
