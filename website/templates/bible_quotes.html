@@ -58,25 +58,23 @@
                 <h4 class="mb-4">Welcome, {{user.username}}</h4>
             <!--Announcement Section-->
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">Announcements</div>
+                <div class="card-header bg-primary text-white">Daily Bible Quotes</div>
                 <div class="card-body">
-                    {% if announcements  %}
-                        <ul class="list-group">
-                        {% for announcement in announcements %}
-                            <li class="list-group-item">
-                                <h6 class="mb-1 text-primary">{{announcement.title}}</h6>
-                                <small class="text-muted">{{announcement.date_posted|date:"F d, Y"}}</small>
-                                <p class="mb-0">{{announcement.content}}</p>
-                                {% if announcement.image %}
-                                    <img src="{{announcement.image.url}}" alt="{{announcement.title}}">
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p class="text-muted">No announcements avaliable</p>
-                    {% endif %}
-                    
+                {% if display_bible_quotes %}
+                    {% for bible in display_bible_quotes %}
+                        <div  class="announcement mb-4 rounded shadow" {% if bible.media_template %} style="background-image: url('{{bible.media_template.template_file.url}}');" {% else %} style="background-color: #333;" {% endif %}>
+                            <div class="overlay text-white">
+                                {% if bible %}
+                                <h3>{{bible.title}}</h3>
+                                <p class="lead">{{ bible.content}}</p>
+                                
+                                {% endif%}
+                            </div>
+                        </div>
+                    {%endfor%}
+                {%else%}
+                    <p class="text-muted">No bible quote for today</p>     
+                {% endif %}       
                 </div>
             </div>
             </main>

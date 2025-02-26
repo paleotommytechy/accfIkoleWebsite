@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from website.media_admin import media_admin_site
+from website.bible_study_admin import bible_study_admin_site
 from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('media-admin/', media_admin_site.urls),
+    path('bible-study-admin/', bible_study_admin_site.urls),
     path('',include('website.urls')),
 ]

@@ -60,3 +60,6 @@ body {
     text-decoration: none;
 
 }
+.showPasswordToggle{
+    cursor: pointer;
+}

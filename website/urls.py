@@ -9,7 +9,11 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('logout/', views.logout_view, name='logout'),
     path('', views.dashboard, name='dashboard'),
+<<<<<<< HEAD
     path('privacy/', views.privacy_view, name='privacy'),
+=======
+    path('bible_quote/', views.bible_quote, name='bible_quote'),
+>>>>>>> 7a75d3e (added bible study unit admin panel)
 ]
 if not settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
